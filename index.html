@@ -8,7 +8,8 @@
 <script>
     async function send(){
         const value=document.getElementById("value").value;
-        await fetch(`https://script.google.com/macros/s/AKfycbx1iazRfdPWCevfDD3OQpdAN8hOV6uI34DG0gbVsoj6MMvu_87lqqn1jlKcXCcvnp3R/exec?value=${value}`)
+        const remark=document.getElementById("remark").value;
+        await fetch(`https://script.google.com/macros/s/AKfycbx1iazRfdPWCevfDD3OQpdAN8hOV6uI34DG0gbVsoj6MMvu_87lqqn1jlKcXCcvnp3R/exec?value=${value}&remarks=${remark}`)
             .then(res=>res.json())
             .then(data=>{
                 if(data==1) alert("送信完了")
@@ -17,7 +18,8 @@
     }
 </script>
 <body>
-    <input type="number" value="1276" id="value">
+    金額：<input type="number" value="1276" id="value"><br>
+    備考：<input type="text" value="東小金井→多摩センター" id="remark"><br>
     <button onclick="send()">送信</button>
 </body>
 </html>
